@@ -7,7 +7,7 @@ set(CMAKE_CXX_STANDARD 17)
 set(QWEN_ASR_DIR ${CMAKE_CURRENT_SOURCE_DIR}/../../../../qwen-asr)
 
 if(ANDROID_ABI STREQUAL "armeabi-v7a")
-    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -mfpu=neon -mfloat-abi=softfp")
+    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -mfpu=neon-vfpv4 -mfloat-abi=softfp")
 endif()
 
 add_library(qwen_asr STATIC
