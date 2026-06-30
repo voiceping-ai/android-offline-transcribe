@@ -6,6 +6,10 @@ set(CMAKE_CXX_STANDARD 17)
 # ---- Qwen ASR core library (mel spectrogram + tokenizer, used by ONNX engine) ----
 set(QWEN_ASR_DIR ${CMAKE_CURRENT_SOURCE_DIR}/../../../../qwen-asr)
 
+if(ANDROID_ABI STREQUAL "armeabi-v7a")
+    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -mfpu=neon -mfloat-abi=softfp")
+endif()
+
 add_library(qwen_asr STATIC
     ${QWEN_ASR_DIR}/qwen_asr.c
     ${QWEN_ASR_DIR}/qwen_asr_kernels.c
